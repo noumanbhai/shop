@@ -7,3 +7,8 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('admin/assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    {{-- data table --}}
+    <link href="{{asset('admin/assets/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+
+
