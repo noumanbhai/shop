@@ -38,7 +38,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validatedData= $request->validate([
-            'category_name' => 'required',
+            'category_name' => 'required|unique:categories',
         ],
         [
            'category_name'=>'Please input your cateory',
@@ -78,7 +78,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.category.edit',compact('category'));
     }
 
     /**
@@ -90,7 +90,19 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $validatedData= $request->validate([
+            'category_name' => 'required|unique:categories',
+        ],
+        [
+           'category_name'=>'Please input your cateory',
+       ]);
+        $fetchdata=Category::find($category->id);
+        $fetchdata->category_name=$request->category_name;
+        $fetchdata->save();
+        $notification = array(
+            'message' => 'Data Update Successfully', 
+            'alert-type' => 'success');
+        return redirect('category')->with($notification);
     }
 
     /**
@@ -101,6 +113,12 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        $notification = array(
+        'message' => 'Data Delete Successfully', 
+        'alert-type' => 'warning');
+        return redirect('category')->with($notification);
+
+
     }
 }
