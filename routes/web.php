@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::resource('/brand','BrandController');
 Route::get('/', function () {
     return view('welcome');
 });
