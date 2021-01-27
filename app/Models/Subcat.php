@@ -5,11 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Subcat extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    // public $timestamps=false;
 
 
+
+
+
+    public function allcats()
+    {
+        return $this->hasOne(Category::class,'id','category_id');
+    }
 }

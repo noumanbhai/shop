@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/brand','BrandController');
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,3 +23,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 })->name('dashboard');
 Route::resource('/category','CategoryController');
+Route::resource('/subcategory','SubcatController');
+Route::resource('/brand','BrandController');

@@ -27,34 +27,35 @@
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Cateory</span>
-        </a>
-        <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Cateory:</h6>
-                <a class="collapse-item" href="{{route('category.index')}}">index</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
-            </div>
-        </div>
-    </li>
-            <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Brand</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Brand:</h6>
-                <a class="collapse-item" href="{{route('brand.index')}}">index</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
-            </div>
-        </div>
-    </li>
+   <li class="nav-item">
+<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
+aria-expanded="true" aria-controls="collapseOne">
+<i class="fas fa-fw fa-cog"></i>
+<span>Category</span>
+</a>
+<div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+<div class="bg-white py-2 collapse-inner rounded">
+<h6 class="collapse-header">Category:</h6>
+<a class="collapse-item" href="{{route('category.index')}}">Category</a>
+<a class="collapse-item" href="{{route('subcategory.index')}}">Sub Category</a>
+</div>
+</div>
+</li>
+
+<li class="nav-item">
+<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsenine"
+aria-expanded="true" aria-controls="collapsenine">
+<i class="fas fa-fw fa-cog"></i>
+<span>Brand</span>
+</a>
+<div id="collapsenine" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+<div class="bg-white py-2 collapse-inner rounded">
+<h6 class="collapse-header">Brand:</h6>
+<a class="collapse-item" href="{{route('brand.index')}}">index</a>
+<a class="collapse-item" href="cards.html">Cards</a>
+</div>
+</div>
+</li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
