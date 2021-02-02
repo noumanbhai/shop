@@ -19,6 +19,7 @@
 <h1 class="h4 text-gray-900 mb-4">Create Brand</h1>
 </div>
 <form action="{{route('brand.store')}}" method="POST" enctype="multipart/form-data">
+	
 @csrf    
 <div class="form-group">
 	<label for="brand">Brand Name</label>
