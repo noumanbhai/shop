@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subcat;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class SubcatController extends Controller
@@ -25,7 +26,9 @@ class SubcatController extends Controller
      */
     public function create()
     {
-        return view('admin.subcategory.create');
+
+        $categorys=Category::all();
+        return view('admin.subcategory.create',compact('categorys'));
     }
 
     /**
@@ -36,7 +39,25 @@ class SubcatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData= $request->validate([
+            'subcategory_name' => 'required',
+        ],
+        [
+           'subcategory_name'=>'Please input your subcateory',
+       ]);
+    // dd($request);
+
+        $subcategory= new Subcat([
+            'subcategory_name'=>$request->subcategory_name,
+            'category_id'=>$request->category_id,
+        ]);
+        $subcategory->save();
+
+        $notification = array(
+            'message' => 'Data Inserted Successfully', 
+            'alert-type' => 'success'
+        );
+        return redirect('subcategory')->with($notification);
     }
 
     /**
@@ -79,8 +100,14 @@ class SubcatController extends Controller
      * @param  \App\Models\Subcat  $subcat
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subcat $subcat)
+    public function destroy(Subcat $subcat,$id)
     {
-        //
+        $sub=Subcat::find($id);
+        $sub->delete();
+        $notification = array(
+        'message' => 'Data Delete Successfully', 
+        'alert-type' => 'warning');
+        return redirect('subcategory')->with($notification);
+
     }
 }

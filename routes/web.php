@@ -25,4 +25,3 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::resource('/category','CategoryController');
 Route::resource('/subcategory','SubcatController');
 Route::resource('/brand','BrandController');
-nn

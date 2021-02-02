@@ -22,11 +22,20 @@
 @csrf   
 <div class="form-group">
 	<label for="category">Sub Create category</label>
-<input type="text" class="form-control form-control-user @error('category_name') is-invalid @enderror" name="subcategory_name" id="category" placeholder="Enter sub category">
+<input type="text" class="form-control form-control-user @error('subcategory_name') is-invalid @enderror" name="subcategory_name" id="category" placeholder="Enter sub category">
 </div>
 @error('subcategory_name')
 <span class="text-danger">{{ $message }}</span>
 @enderror
+<div class="form-group">
+<label for="category">Create category</label>
+  <select name="category_id"class=" form-control">
+
+  	@foreach ($categorys as $category)
+    <option value="{{$category->id}}">{{$category->category_name}}</option>
+  	@endforeach
+  </select>
+</div>
 <div class="text-center">
 <button class="btn btn-primary" type="submit">Save</button>
 </div>
@@ -39,3 +48,5 @@
 </div>
 <!-- Main Content End  -->
 @endsection
+
+
