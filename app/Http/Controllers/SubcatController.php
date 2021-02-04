@@ -43,8 +43,8 @@ class SubcatController extends Controller
             'subcategory_name' => 'required',
         ],
         [
-           'subcategory_name'=>'Please input your subcateory',
-       ]);
+         'subcategory_name'=>'Please input your subcateory',
+     ]);
     // dd($request);
 
         $subcategory= new Subcat([
@@ -77,9 +77,12 @@ class SubcatController extends Controller
      * @param  \App\Models\Subcat  $subcat
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subcat $subcat)
+    public function edit(Subcat $subcat,$id)
     {
-        //
+        //return $id;
+        $subcategory=Subcat::find($id);
+        $cateorys=Category::all();
+        return view('admin.subcategory.edit',compact('subcategory','cateorys'));
     }
 
     /**
@@ -89,9 +92,20 @@ class SubcatController extends Controller
      * @param  \App\Models\Subcat  $subcat
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subcat $subcat)
+    public function update(Request $request, Subcat $subcat,$subcategory)
     {
-        //
+        //dd($subcategory); 
+        //dd($subcategory->subcategory_name);
+        
+        $fetchdata=Subcat::find($subcategory);
+        $fetchdata->subcategory_name=$request->subcategory_name;
+        $fetchdata->category_id=$request->category_id;
+        $fetchdata->save();
+        $notification = array(
+            'message' => 'Data Update Successfully', 
+            'alert-type' => 'success');
+        return redirect('subcategory')->with($notification);
+        
     }
 
     /**
@@ -105,8 +119,8 @@ class SubcatController extends Controller
         $sub=Subcat::find($id);
         $sub->delete();
         $notification = array(
-        'message' => 'Data Delete Successfully', 
-        'alert-type' => 'warning');
+            'message' => 'Data Delete Successfully', 
+            'alert-type' => 'warning');
         return redirect('subcategory')->with($notification);
 
     }

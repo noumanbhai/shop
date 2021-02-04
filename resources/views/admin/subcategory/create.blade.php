@@ -16,7 +16,7 @@
 <div class="col-lg-6 offset-3">
 <div class="p-5">
 <div class="text-center">
-<h1 class="h4 text-gray-900 mb-4">Sub Create Category</h1>
+<h1 class="h4 text-gray-900 mb-4">Create Sub Category</h1>
 </div>
 <form action="{{route('subcategory.store')}}" method="POST" >
 @csrf   
