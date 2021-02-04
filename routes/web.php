@@ -26,3 +26,5 @@ Route::resource('/category','CategoryController');
 Route::resource('/subcategory','SubcatController');
 Route::resource('/brand','BrandController');
 Route::resource('/coupon','CouponController');
+Route::resource('/other','NewsleterController');
+Route::resource('/product','ProductController');

@@ -69,6 +69,33 @@ aria-expanded="true" aria-controls="collapseseven">
 </div>
 </div>
 </li>
+<li class="nav-item">
+<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsesix"
+aria-expanded="true" aria-controls="collapsesix">
+<i class="fas fa-fw fa-cog"></i>
+<span>Other</span>
+</a>
+<div id="collapsesix" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+<div class="bg-white py-2 collapse-inner rounded">
+<h6 class="collapse-header">Other:</h6>
+<a class="collapse-item" href="{{route('other.index')}}">counpn</a>
+</div>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsefive"
+aria-expanded="true" aria-controls="collapsefive">
+<i class="fas fa-fw fa-cog"></i>
+<span>Product</span>
+</a>
+<div id="collapsefive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+<div class="bg-white py-2 collapse-inner rounded">
+<h6 class="collapse-header">Add Product:</h6>
+<a class="collapse-item" href="{{route('product.index')}}">Add Product</a>
+<a class="collapse-item" href="{{route('product.index')}}">Add Product</a>
+</div>
+</div>
+</li>
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
