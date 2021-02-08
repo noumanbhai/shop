@@ -106,24 +106,34 @@
 									<p>Image One (Main Thumbnail)</p>
 									<div class="custom-file mb-3">
 
-										<input type="file" class="custom-file-input" id="one" name="image_one">
+										<input type="file"   class="custom-file-input" id="one" name="image_one" onchange="readURL1(this);">
 										<label class="custom-file-label" for="one">Image one upload</label>
+										
+									</div>
+									<div class="text-center">
+										<img  class="img-thumbnail center" id="image_one" style="border:none"> 
 									</div>
 								</div>
 								<div class="form-group col-md-4">
 									<p>Image Two (Main Thumbnail)</p>
 									<div class="custom-file mb-3">
 
-										<input type="file" class="custom-file-input" id="two" name="image_two">
+										<input type="file" class="custom-file-input" id="two" name="image_two" onchange="readURL2(this);">
 										<label class="custom-file-label" for="two">Image two upload</label>
+									</div>
+									<div class="text-center">
+										<img  class="img-thumbnail center" id="image_two" style="border:none"> 
 									</div>
 								</div>
 								<div class="form-group col-md-4">
 									<p>Image Three (Main Thumbnail)</p>
 									<div class="custom-file mb-3">
 
-										<input type="file" class="custom-file-input" id="three" name="image_three">
+										<input type="file" class="custom-file-input" id="three" name="image_three" onchange="readURL3(this);">
 										<label class="custom-file-label" for="three">Image three upload</label>
+									</div>
+									<div class="text-center" >
+										<img  class="img-thumbnail center" id="image_three" style="border:none"> 
 									</div>
 								</div>
 
@@ -213,4 +223,58 @@
 
 </script>
 
+<script>
+	function readURL1(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function (e) {
+				$('#image_one')
+				.attr('src', e.target.result)
+				.width(81)
+				.height(81);
+			};
+
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+</script>
+<script>
+	function readURL2(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function (e) {
+				$('#image_two')
+				.attr('src', e.target.result)
+				.width(81)
+				.height(81);
+			};
+
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+</script>
+<script>
+	function readURL3(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function (e) {
+				$('#image_three')
+				.attr('src', e.target.result)
+				.width(81)
+				.height(81);
+			};
+
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+</script>
 
