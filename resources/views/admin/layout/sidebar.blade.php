@@ -38,24 +38,11 @@ aria-expanded="true" aria-controls="collapseOne">
 <h6 class="collapse-header">Category:</h6>
 <a class="collapse-item" href="{{route('category.index')}}">Category</a>
 <a class="collapse-item" href="{{route('subcategory.index')}}">Sub Category</a>
+<a class="collapse-item" href="{{route('brand.index')}}">Brand</a>
 </div>
 </div>
 </li>
 
-<li class="nav-item">
-<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsenine"
-aria-expanded="true" aria-controls="collapsenine">
-<i class="fas fa-fw fa-cog"></i>
-<span>Brand</span>
-</a>
-<div id="collapsenine" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-<div class="bg-white py-2 collapse-inner rounded">
-<h6 class="collapse-header">Brand:</h6>
-<a class="collapse-item" href="{{route('brand.index')}}">index</a>
-<a class="collapse-item" href="cards.html">Cards</a>
-</div>
-</div>
-</li>
 <li class="nav-item">
 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseseven"
 aria-expanded="true" aria-controls="collapseseven">

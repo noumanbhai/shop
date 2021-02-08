@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\Subcat;
+use App\Models\Brand;
 use Illuminate\Http\Request;
+use DB;
 
 class ProductController extends Controller
 {
@@ -24,18 +28,21 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categorys=Category::all();
+        $subcats=Subcat::all();
+        $brands=Brand::all();
+        return view('admin.product.create',compact('categorys','subcats','brands'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in storage.create
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -81,5 +88,12 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    public function cat($id)
+    {
+
+        return $subcats=DB::table('subcats')->where('category_id',$id)->get();
+
     }
 }
