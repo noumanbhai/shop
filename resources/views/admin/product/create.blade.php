@@ -19,7 +19,7 @@
 						<div class="text-center">
 							<h1 class="h4 text-gray-900 mb-4">Product Create</h1>
 						</div>
-						<form action="{{route('product.store')}}" method="POST" >
+						<form action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
 							@csrf  
 							<div class="form-row">
 								<div class="form-group col-md-4">
@@ -38,7 +38,7 @@
 								@enderror
 								<div class="form-group col-md-4">
 									<label for="pquan">Product Quantity</label>
-									<input type="text" class="form-control @error('product_quantity') is-invalid @enderror" name="product_quantity" id="pquan" placeholder="Enter product code">
+									<input type="text" class="form-control @error('product_quantity') is-invalid @enderror" name="product_quantity" id="pquan" placeholder="Enter product quantity">
 								</div>
 								@error('product_quantity')
 								<span class="text-danger">{{ $message }}</span>
@@ -87,18 +87,16 @@
 							</div> 
 
 							<div class="form-row">
-
-								<div class="form-group col-md-12">
+                          <div class="form-group col-md-12">
 									<label for="pdetails">Product Details</label>
-									<textarea class="form-control summernote" name="product_details"></textarea>	
-
-
-								</div>
+					<textarea class="form-control summernote" name="product_details">
+									</textarea>	
+                                 </div>
 							</div> 
 							<div class="form-row">
 								<div class="form-group col-md-12">
 									<label for="video_link">Video Link</label>
-									<input type="text" class="form-control @error('video_link') is-invalid @enderror" name="video_link" id="video_link" placeholder="Enter video  link">
+									<input type="text" class="form-control" name="video_link" id="video_link" placeholder="Enter video  link">
 								</div>
 							</div> 
 							<div class="form-row">
@@ -108,7 +106,7 @@
 
 										<input type="file"   class="custom-file-input" id="one" name="image_one" onchange="readURL1(this);">
 										<label class="custom-file-label" for="one">Image one upload</label>
-										
+
 									</div>
 									<div class="text-center">
 										<img  class="img-thumbnail center" id="image_one" style="border:none"> 
