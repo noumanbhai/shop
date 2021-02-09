@@ -8,6 +8,7 @@ use App\Models\Subcat;
 use App\Models\Brand;
 use Illuminate\Http\Request;
 use DB;
+use File;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class ProductController extends Controller
@@ -149,7 +150,21 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+         $image_one=$product->image_one;
+         $image_two=$product->image_two;
+         $image_three=$product->image_three;
+        $path_imgone=('/media/product/'. $image_one);
+        $path_imgtwo=('/media/product/'. $image_two);
+        $path_imgthree=('/media/product/'. $image_three);
+
+        $nn=File::delete(public_path($path_imgone));
+        $nn=File::delete(public_path($path_imgtwo));
+        $nn=File::delete(public_path($path_imgthree));
+        $product->delete();
+        $notification = array(
+        'message' => 'Data Inserted Successfully', 
+        'alert-type' => 'warning');
+        return redirect('product')->with($notification);
     }
 
     public function cat($id)
