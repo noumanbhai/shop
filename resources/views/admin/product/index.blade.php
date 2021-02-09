@@ -29,24 +29,27 @@
                     </tr>
                 </thead>
                 <tbody>
+
                     @foreach ($products as  $product)
                     <tr>
                         <td>{{$product->product_code}}</td>
                         <td>{{$product->product_name}}</td>
                         <td><img src="{{ URL::to('/') }}/media/product/{{ $product->image_one }}" class="img-thumbnail" width="50" height="50" /></td>
                         <td>{{$product->allcats->category_name}}</td>
-                        <td>{{$product->allbrands->brand_name}}</td>
+                        <td>@if(isset($product->allbrands->id)){{$product->allbrands->brand_name}}@endif</td>
                         <td>{{$product->product_quantity}}</td>
                         <td>{{$product->selling_price}}</td>
                         <td>{{$product->status}}</td>
                         <td>
-<form action="{{ route('product.destroy', $product->id)}}" method="post">
-@csrf
-@method('DELETE')
-<a href="{{route('product.edit',$product->id)}}" class="btn btn-primary">Edit</a> 
+                            <form action="{{ route('product.destroy', $product->id)}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <a href="{{route('product.show',$product->id)}}" class="btn btn-info">Show</a> 
 
-<button class="btn btn-danger" onclick="return confirm('Are you sure?')" type="submit">Delete</button>
-</form>
+                                <a href="{{route('product.edit',$product->id)}}" class="btn btn-primary">Edit</a> 
+
+                                <button class="btn btn-danger" onclick="return confirm('Are you sure?')" type="submit">Delete</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach

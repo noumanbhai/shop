@@ -31,9 +31,9 @@ class ProductController extends Controller
     public function create()
     {
         $categorys=Category::all();
-        $subcats=Subcat::all();
+        $subcategorys=Subcat::all();
         $brands=Brand::all();
-        return view('admin.product.create',compact('categorys','subcats','brands'));
+        return view('admin.product.create',compact('categorys','subcategorys','brands'));
     }
 
     /**
@@ -44,13 +44,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+
+         //dd($request->all());
         // return $image= $request->file('image_one');
         $image_one=$request->image_one;
         $image_two=$request->image_two;
         $image_three=$request->image_three;
 
         if ($image_one && $image_two && $image_three) {
+
             $image_one_name=hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
             Image::make($image_one)->resize(300,300)->save(public_path('/media/product/'.$image_one_name));
             $oneimage = $image_one_name;
@@ -84,11 +86,11 @@ class ProductController extends Controller
                 'image_two'=>$twoimage,
                 'image_three'=>$threeimage,
                 'status'=>1,
+                'brand_id'=>$request->brand_id,
             // 'best_raited'=>"good",
 
             ]);
         }
-
         $product->save();
         $notification = array(
             'message' => 'Data Inserted Successfully', 
@@ -109,7 +111,11 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        // return $product;
+        $categorys=Category::all();
+        $subcategorys=Subcat::all();
+        $brands=Brand::all();
+       return view('admin.product.show',compact('product','categorys','subcategorys','brands'));
     }
 
     /**

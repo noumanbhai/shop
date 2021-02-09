@@ -61,7 +61,7 @@
 								</div>
 								<div class="form-group col-md-4">
 									<label for="category">Brand</label>
-									<select name="subcategory_id"class=" form-control">
+									<select name="brand_id"class=" form-control">
 										<option label="Chose Brand"></option>
 										@foreach ($brands as $brand)
 										<option value="{{$brand->id}}">{{$brand->brand_name}}</option>
