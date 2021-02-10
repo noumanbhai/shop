@@ -125,7 +125,7 @@
 <div class="form-group col-md-4">
 <div class="form-check">
 
-<input name="main_slider" type="checkbox" class="form-check-input"  {{ ($product->main_slider == 1) ? 'checked' : '' }}>
+<input name="main_slider" type="checkbox" id="invalidCheck1" class="form-check-input"  {{ ($product->main_slider == 1) ? 'checked' : '' }}>
 
 
 
@@ -134,13 +134,13 @@
 </div>
 <div class="form-group col-md-4">
 <div class="form-check">
-<input name="main_sliderhot_deal" type="checkbox" class="form-check-input"  {{ ($product->hot_deal == 1) ? 'checked' : '' }}>
+<input name="main_sliderhot_deal" type="checkbox" id="invalidCheck2" class="form-check-input"  {{ ($product->hot_deal == 1) ? 'checked' : '' }}>
 <label class="form-check-label" for="invalidCheck2">Hot Deal</label>
 </div>
 </div>
 <div class="form-group col-md-4">
 <div class="form-check">
-<input name="best_rated" type="checkbox" class="form-check-input"  {{ ($product->best_rated == 1) ? 'checked' : '' }}>
+<input name="best_rated" type="checkbox" id="invalidCheck3" class="form-check-input"  {{ ($product->best_rated == 1) ? 'checked' : '' }}>
 <label class="form-check-label" for="invalidCheck3">Best Raited</label>
 </div>
 </div>
@@ -148,19 +148,19 @@
 <div class="form-row">
 <div class="form-group col-md-4">
 <div class="form-check">
-<input name="mid_slider" type="checkbox" class="form-check-input"  {{ ($product->mid_slider == 1) ? 'checked' : '' }}>
+<input name="mid_slider" type="checkbox" id="invalidCheck4" class="form-check-input"  {{ ($product->mid_slider == 1) ? 'checked' : '' }}>
 <label class="form-check-label" for="invalidCheck4">Mid Slider</label>
 </div>
 </div>
 <div class="form-group col-md-4">
 <div class="form-check">
-<input name="hot_deal" type="checkbox" class="form-check-input"  {{ ($product->hot_deal == 1) ? 'checked' : '' }}>
+<input name="hot_new" type="checkbox" id="invalidCheck5" class="form-check-input"  {{ ($product->hot_new == 1) ? 'checked' : '' }}>
 <label class="form-check-label" for="invalidCheck5">Hot New</label>
 </div>
 </div>
 <div class="form-group col-md-4">
 <div class="form-check">
-<input name="trend" type="checkbox" class="form-check-input"  {{ ($product->trend == 1) ? 'checked' : '' }}>
+<input name="trend" type="checkbox" id="invalidCheck6" class="form-check-input"  {{ ($product->trend == 1) ? 'checked' : '' }}>
 <label class="form-check-label" for="invalidCheck6">Trend Product</label>
 </div>
 </div>
