@@ -9,6 +9,9 @@ use App\Models\Brand;
 use Illuminate\Http\Request;
 use DB;
 use File;
+use Carbon;
+use Illuminate\Support\Facades\Storage;
+
 use Intervention\Image\ImageManagerStatic as Image;
 
 class ProductController extends Controller
@@ -127,7 +130,16 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        // return $product->subcategory_id;
+
+// return $user=DB::table('subcats')->where('id',$product->subcategory_id)->value('subcategory_id');
+// return $user=DB::table('subcats')->where('id',$product->)->get();
+
+        // return $product;
+        $categorys=Category::all();
+        $subcategorys=Subcat::all();
+        $brands=Brand::all();
+        return view('admin.product.edit',compact('product','categorys','subcategorys','brands'));
     }
 
     /**
@@ -139,7 +151,62 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+
+// dd($request->all());
+// images upload
+$images=[$request->image_one_new,$request->image_two_new,$request->image_three_new];
+$old_image=[$request->old_image_one,$request->old_image_two,$request->old_image_three];
+$imageName=[];
+
+foreach ($images as $key => $image) {
+if($image){
+$imageName[$key]= rand(11111, 99999) . '.' . $image->getClientOriginalExtension();
+$image->move(public_path('/media/product/'), $imageName[$key]);
+if(isset($old_image[$key])){
+unlink(public_path('/media/product/'.$old_image[$key]));   
+}
+}
+else{
+$imageName[$key]=$old_image[$key];
+}
+}
+
+       $fetchdata=Product::find($product->id);
+       $fetchdata->product_name=$request->product_name;
+       $fetchdata->product_code=$request->product_code;
+       $fetchdata->product_quantity=$request->product_quantity;
+       $fetchdata->category_id=$request->category_id;
+       $fetchdata->subcategory_id=$request->subcategory_id;
+       $fetchdata->brand_id=$request->brand_id;
+       $fetchdata->product_size=$request->product_size;
+       $fetchdata->product_color=$request->product_color;
+       $fetchdata->selling_price=$request->selling_price;
+       $fetchdata->product_details=$request->product_details;
+       $fetchdata->video_link=$request->video_link;
+       $fetchdata->main_slider=$request->main_slider;
+       $fetchdata->hot_deal=$request->hot_deal;
+       $fetchdata->best_rated=$request->best_raited;
+       $fetchdata->mid_slider=$request->mid_slider;
+       $fetchdata->hot_new=$request->hot_new;
+       $fetchdata->trend=$request->trend_product;
+       $fetchdata->status=1;
+       // images
+       $fetchdata->image_one=$imageName[0];
+       $fetchdata->image_two=$imageName[1];
+       $fetchdata->image_three=$imageName[2];
+       $fetchdata->created_at=Carbon::now();
+       $fetchdata->save();
+        $notification = array(
+       'message' => 'Data Update Successfully', 
+       'alert-type' => 'success');
+      return redirect('product')->with($notification);
+
+
+
+
+
+
+
     }
 
     /**
@@ -172,5 +239,16 @@ class ProductController extends Controller
 
         return $subcats=DB::table('subcats')->where('category_id',$id)->get();
 
+    }
+
+    public function getSubCatsAjax($id){
+        $subcats = $subcats=DB::table('subcats')->where('category_id',$id)->get();
+        // $options = "";
+        // foreach($subcats as $sub){
+        //     $selected = $sub->id == $id ? 'selected' : '';
+        //     $options .= "<option value='" . $sub->id . "' . {$selected}>" . $sub->subcategory_name . "</option>";
+        // }
+        return $subcats;
+        return $options;
     }
 }

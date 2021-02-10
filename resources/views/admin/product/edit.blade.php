@@ -51,25 +51,33 @@
 @enderror
 </div> 
 <div class="form-row">
+<?php
+	$cat_id = null;
+?>
 <div class="form-group col-md-4">
 <label for="category">Category</label>
 <select name="category_id"class=" form-control" id="category">
 <option selected="" dissable="">Chose Category</option>
 @foreach ($categorys as $category)
+	<?php if($product->category_id == $category->id){
+		$cat_id = $category->id;
+ 	} ?>
 <option value="{{$category->id}}" 
 {{$product->category_id == $category->id ? "selected" : ""}}>{{$category->category_name}}</option>
 @endforeach
 </select>
 </div>
-
 <div class="form-group col-md-4">
 <label for="category">Sub Category</label>
-<select name="subcategory_id"class=" form-control" id="category">
-<option selected="" dissable="">Chose Sub Category</option>
-@foreach ($subcategorys as $subcategory)
-<option value="{{$subcategory->id}}" 
-{{$product->subcategory_id == $subcategory->id ? "selected" : ""}}>{{$subcategory->subcategory_name}}</option>
-@endforeach
+<select name="subcategory_id"class=" form-control" id="subcategory_id">
+<option selected="">Choose Sub Category</option>
+	@foreach($subcategorys as $subcategory)
+	{{$subcategory->id}}
+		@if($cat_id == $subcategory->category_id)
+			<option value="{{$subcategory->id}}" 
+				{{$product->subcategory_id == $subcategory->id ? "selected" : ""}}>{{$subcategory->subcategory_name}}</option>
+		@endif
+	@endforeach
 </select>
 </div>
 
@@ -82,9 +90,9 @@
 
 
 <div class="form-group col-md-4">
-<label for="category">Brands</label>
-<select name="subcategory_id"class=" form-control" id="category">
-<option selected="" dissable="">Chose Sub Category</option>
+<label for="brands">Brands</label>
+<select name="brand_id"class=" form-control" id="brands">
+<option selected="" dissable="">Chose Brands</option>
 @foreach ($brands as $brand)
 <option value="{{$brand->id}}" 
 {{$product->brand_id == $brand->id ? "selected" : ""}}>{{$brand->brand_name}}</option>
@@ -219,21 +227,21 @@
 	</div>
 </div>
 
-Main Content End 
+<!-- Main Content End  -->
 @endsection
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 
 	$(document).ready(function() {
 		$('#category').on('change', function(){
 			let category = $('#category').val();
 			if (category ) {
 				$.ajax({
-					url: '/subcat/'+category,
+					url: '/subcatajax/'+category,
 					type: "GET",
 					dataType: "json",
 					success:function(data) {
-					// console.log(data);
+					console.log(data);
 					$('#subcategory_id').empty();
 					$.each(data,function(key,value) {
 						$('#subcategory_id').append('<option value="'+value.id+'">'+value.subcategory_name+'</option>');
@@ -247,7 +255,7 @@ Main Content End
 		})
 	});
 
-</script> -->
+</script>
 
 <script>
 	function readURL1(input) {

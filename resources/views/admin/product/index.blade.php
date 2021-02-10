@@ -36,7 +36,7 @@
                         <td>{{$product->product_name}}</td>
                         <td><img src="{{ URL::to('/') }}/media/product/{{ $product->image_one }}" class="img-thumbnail" width="50" height="50" /></td>
                         <td>{{$product->allcats->category_name}}</td>
-                        <td>@if(isset($product->allbrands->id)){{$product->allbrands->brand_name}}@endif</td>
+<td>@if(isset($product->allbrands->id)){{$product->allbrands->brand_name}}@endif</td>
                         <td>{{$product->product_quantity}}</td>
                         <td>{{$product->selling_price}}</td>
                         <td>{{$product->status}}</td>
