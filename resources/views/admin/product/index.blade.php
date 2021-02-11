@@ -39,7 +39,25 @@
 <td>@if(isset($product->allbrands->id)){{$product->allbrands->brand_name}}@endif</td>
                         <td>{{$product->product_quantity}}</td>
                         <td>{{$product->selling_price}}</td>
-                        <td>{{$product->status}}</td>
+                        <!-- <td>{{$product->status}}</td> -->
+                        <td>
+<form action="{{ route('product.status', $product->id)}}" method="post">
+@csrf
+@method('POST')
+@if($product->status == '1')
+
+
+
+    <a class="btn btn-sm btn-danger" href="{{ route('product.status', $product->id)}}" >Inactive</a>
+    <!-- <button class="btn btn-sm btn-primary" value="active">active</button> -->
+@else
+
+    <a class="btn btn-sm btn-primary" href="{{ route('product.status', $product->id)}}" >Activated</a>
+
+
+@endif
+</form>
+                        </td>
                         <td>
                             <form action="{{ route('product.destroy', $product->id)}}" method="post">
                                 @csrf

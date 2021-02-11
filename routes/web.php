@@ -30,4 +30,5 @@ Route::resource('/other','NewsleterController');
 Route::resource('/product','ProductController');
 Route::get('/subcat/{id?}','ProductController@cat');
 Route::get('/subcatajax/{id?}','ProductController@getSubCatsAjax');
+Route::get('/productstatus/{id?}','ProductController@status')->name('product.status');
 
