@@ -83,6 +83,21 @@ aria-expanded="true" aria-controls="collapsefive">
 </div>
 </div>
 </li>
+<li class="nav-item">
+<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseten"
+aria-expanded="true" aria-controls="collapseten">
+<i class="fas fa-fw fa-cog"></i>
+<span>Blog</span>
+</a>
+<div id="collapseten" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+<div class="bg-white py-2 collapse-inner rounded">
+<h6 class="collapse-header">Blog:</h6>
+<a class="collapse-item" href="{{route('postcategory.index')}}">Blog Post Category</a>
+<a class="collapse-item" href="{{route('post.index')}}">Blog Post List</a>
+</div>
+</div>
+</li>
+
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"

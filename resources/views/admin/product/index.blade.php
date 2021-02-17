@@ -20,7 +20,8 @@
                         <th>Product Code</th>
                         <th>Product Name</th>
                         <th>Image</th>
-                        <th>Cateory</th>
+                        <th>Category</th>
+                        <th>Sub-Cat</th>
                         <th>Brand</th>
                         <th>Quantity</th>
                         <th>Price</th>
@@ -36,27 +37,28 @@
                         <td>{{$product->product_name}}</td>
                         <td><img src="{{ URL::to('/') }}/media/product/{{ $product->image_one }}" class="img-thumbnail" width="50" height="50" /></td>
                         <td>{{$product->allcats->category_name}}</td>
-<td>@if(isset($product->allbrands->id)){{$product->allbrands->brand_name}}@endif</td>
+                        <td>{{$product->allsubcat->subcategory_name}}</td>
+                        <td>@if(isset($product->allbrands->id)){{$product->allbrands->brand_name}}@endif</td>
                         <td>{{$product->product_quantity}}</td>
                         <td>{{$product->selling_price}}</td>
                         <!-- <td>{{$product->status}}</td> -->
                         <td>
-<form action="{{ route('product.status', $product->id)}}" method="post">
-@csrf
-@method('POST')
-@if($product->status == '1')
+                            <form action="{{ route('product.status', $product->id)}}" method="post">
+                                @csrf
+                                @method('POST')
+                                @if($product->status == '1')
 
 
 
-    <a class="btn btn-sm btn-danger" href="{{ route('product.status', $product->id)}}" >Inactive</a>
-    <!-- <button class="btn btn-sm btn-primary" value="active">active</button> -->
-@else
+                                <a class="btn btn-sm btn-danger" href="{{ route('product.status', $product->id)}}" >Inactive</a>
+                                <!-- <button class="btn btn-sm btn-primary" value="active">active</button> -->
+                                @else
 
-    <a class="btn btn-sm btn-primary" href="{{ route('product.status', $product->id)}}" >Activated</a>
+                                <a class="btn btn-sm btn-primary" href="{{ route('product.status', $product->id)}}" >Activated</a>
 
 
-@endif
-</form>
+                                @endif
+                            </form>
                         </td>
                         <td>
                             <form action="{{ route('product.destroy', $product->id)}}" method="post">

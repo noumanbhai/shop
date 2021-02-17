@@ -73,6 +73,7 @@ class ProductController extends Controller
                 'product_name'=>$request->product_name,
                 'product_code'=>$request->product_code,
                 'product_quantity'=>$request->product_quantity,
+                'discount_price'=>$request->discount_price,
                 'category_id'=>$request->category_id,
                 'subcategory_id'=>$request->subcategory_id,
                 'product_size'=>$request->product_size,
@@ -175,6 +176,7 @@ class ProductController extends Controller
         $fetchdata->product_name=$request->product_name;
         $fetchdata->product_code=$request->product_code;
         $fetchdata->product_quantity=$request->product_quantity;
+        $fetchdata->discount_price=$request->discount_price;
         $fetchdata->category_id=$request->category_id;
         $fetchdata->subcategory_id=$request->subcategory_id;
         $fetchdata->brand_id=$request->brand_id;
@@ -197,8 +199,8 @@ class ProductController extends Controller
         $fetchdata->created_at=Carbon::now();
         $fetchdata->save();
         $notification = array(
-         'message' => 'Data Update Successfully', 
-         'alert-type' => 'success');
+           'message' => 'Data Update Successfully', 
+           'alert-type' => 'success');
         return redirect('product')->with($notification);
 
 
@@ -217,25 +219,25 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-       $image_one=$product->image_one;
-       $image_two=$product->image_two;
-       $image_three=$product->image_three;
-       $path_imgone=('/media/product/'. $image_one);
-       $path_imgtwo=('/media/product/'. $image_two);
-       $path_imgthree=('/media/product/'. $image_three);
+     $image_one=$product->image_one;
+     $image_two=$product->image_two;
+     $image_three=$product->image_three;
+     $path_imgone=('/media/product/'. $image_one);
+     $path_imgtwo=('/media/product/'. $image_two);
+     $path_imgthree=('/media/product/'. $image_three);
 
-       $nn=File::delete(public_path($path_imgone));
-       $nn=File::delete(public_path($path_imgtwo));
-       $nn=File::delete(public_path($path_imgthree));
-       $product->delete();
-       $notification = array(
+     $nn=File::delete(public_path($path_imgone));
+     $nn=File::delete(public_path($path_imgtwo));
+     $nn=File::delete(public_path($path_imgthree));
+     $product->delete();
+     $notification = array(
         'message' => 'Data Inserted Successfully', 
         'alert-type' => 'warning');
-       return redirect('product')->with($notification);
-   }
+     return redirect('product')->with($notification);
+ }
 
-   public function cat($id)
-   {
+ public function cat($id)
+ {
 
     return $subcats=DB::table('subcats')->where('category_id',$id)->get();
 

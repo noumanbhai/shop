@@ -18,4 +18,8 @@ class Product extends Model
 	{
 		return $this->hasOne(Brand::class,'id','brand_id');
 	}
+		public function allsubcat()
+	{
+		return $this->hasOne(Subcat::class,'id','subcategory_id');
+	}
 }

@@ -22,31 +22,38 @@
 						<form action="{{route('product.update',$product->id)}}" method="POST" enctype="multipart/form-data">
 							{{ csrf_field() }}
 							{{ method_field('PUT') }}
-
-
-
-
-
 							<div class="form-row">
-								<div class="form-group col-md-4">
+								<div class="form-group col-md-6">
 									<label for="pname">Product Name</label>
 									<input type="text"  class="form-control" value="{{$product->product_name  }}" name="product_name"  id="pname" >
 								</div>
 								@error('product_name')
 								<span class="text-danger">{{ $message }}</span>
 								@enderror
-								<div class="form-group col-md-4">
+								<div class="form-group col-md-6">
 									<label for="pcode">Product Code</label>
 									<input type="text" class="form-control @error('product_code') is-invalid @enderror" value="{{$product->product_code  }}"name="product_code" id="pcode" placeholder="Enter product code">
 								</div>
 								@error('product_code')
 								<span class="text-danger">{{ $message }}</span>
 								@enderror
-								<div class="form-group col-md-4">
+								
+							</div> 
+							<div class="form-row">
+
+
+								<div class="form-group col-md-6">
 									<label for="pquan">Product Quantity</label>
 									<input type="text" class="form-control @error('product_quantity') is-invalid @enderror" value="{{$product ->product_quantity }}"name="product_quantity" id="pquan" placeholder="Enter product quantity">
 								</div>
 								@error('product_quantity')
+								<span class="text-danger">{{ $message }}</span>
+								@enderror
+								<div class="form-group col-md-6">
+									<label for="pcode">Product Discount</label>
+									<input type="text" class="form-control @error('discount_price') is-invalid @enderror" value="{{$product->discount_price  }}"name="discount_price" id="pcode" placeholder="Enter product discount price">
+								</div>
+								@error('discount_price')
 								<span class="text-danger">{{ $message }}</span>
 								@enderror
 							</div> 

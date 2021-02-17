@@ -22,25 +22,35 @@
 						<form action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
 							@csrf  
 							<div class="form-row">
-								<div class="form-group col-md-4">
+								<div class="form-group col-md-6">
 									<label for="pname">Product Name</label>
 									<input type="text"  class="form-control @error('product_name') is-invalid @enderror" name="product_name"  id="pname" placeholder="Enter product name">
 								</div>
 								@error('product_name')
 								<span class="text-danger">{{ $message }}</span>
 								@enderror
-								<div class="form-group col-md-4">
+								<div class="form-group col-md-6">
 									<label for="pcode">Product Code</label>
 									<input type="text" class="form-control @error('product_code') is-invalid @enderror" name="product_code" id="pcode" placeholder="Enter product code">
 								</div>
 								@error('product_code')
 								<span class="text-danger">{{ $message }}</span>
 								@enderror
-								<div class="form-group col-md-4">
+								
+							</div> 
+							<div class="form-row">
+								<div class="form-group col-md-6">
 									<label for="pquan">Product Quantity</label>
 									<input type="text" class="form-control @error('product_quantity') is-invalid @enderror" name="product_quantity" id="pquan" placeholder="Enter product quantity">
 								</div>
 								@error('product_quantity')
+								<span class="text-danger">{{ $message }}</span>
+								@enderror
+								<div class="form-group col-md-6">
+									<label for="pdisc">Product Discount</label>
+									<input type="text" class="form-control @error('discount_price') is-invalid @enderror" name="discount_price" id="pdisc" placeholder="Enter product discount">
+								</div>
+								@error('discount_price')
 								<span class="text-danger">{{ $message }}</span>
 								@enderror
 							</div> 
@@ -87,11 +97,11 @@
 							</div> 
 
 							<div class="form-row">
-                          <div class="form-group col-md-12">
+								<div class="form-group col-md-12">
 									<label for="pdetails">Product Details</label>
-					<textarea class="form-control summernote" name="product_details">
+									<textarea class="form-control summernote" name="product_details">
 									</textarea>	
-                                 </div>
+								</div>
 							</div> 
 							<div class="form-row">
 								<div class="form-group col-md-12">
