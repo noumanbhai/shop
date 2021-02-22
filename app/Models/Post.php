@@ -9,5 +9,9 @@ class Post extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public function allpost()
+    {
+        return $this->hasOne(Post_category::class,'id','category_id');
+    }
 
 }

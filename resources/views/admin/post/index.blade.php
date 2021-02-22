@@ -19,7 +19,8 @@
                     <tr>
                         <th>#</th>
                         <th>Post Title English</th>
-                        <th>Post Details Urdu</th>
+                        <th>Post Category</th>
+                        <th>Image</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -28,8 +29,8 @@
                     <tr>
                         <td>{{$key+1}}</td>
                         <td>{{$post->post_title_en}}</td>
-                        <td>{{$post->details_en}}</td>
-                        <td>
+                        <td>{{$post->allpost->category_name_en}}</td>
+    <td><img src="{{ URL::to('/') }}/media/post/{{ $post->post_image }}" class="img-thumbnail" width="50" height="50" /></td>                        <td>
 <form action="{{ route('post.destroy', $post->id)}}" method="post">
 @csrf
 @method('DELETE')
