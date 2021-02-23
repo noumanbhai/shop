@@ -35,8 +35,10 @@
 /***********
 1. Fonts
 ***********/
-
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900|Rubik:300,400,500,700,900');
+/*{{asset('frontend/assets/js/custom.js')}}
+*//*@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900|Rubik:300,400,500,700,900');*/
+@import url('{{asset('frontend/assets/js/custom.js')}}');
+@import url('{{asset('frontend/assets/js/fa-solid-900.woff2')}}');
 
 /*********************************
 2. Body and some general stuff
