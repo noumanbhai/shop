@@ -14,20 +14,6 @@
 						</div>
 
 						<ul class="cat_menu">
-<!-- 							<li class="hassubs">
-								<a href="#">Hardware<i class="fas fa-chevron-right"></i></a>
-								<ul>
-									<li class="hassubs">
-
-										<a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
-										
-						
-									</li>
-							
-								</ul>
-							</li> -->
-<!-- 							<li><a href="#">Accessories<i class="fas fa-chevron-right"></i></a></li>
--->
 
 @forelse ($categorys as $cat)
 <li class="hassubs"><a href="#">{{ $cat->category_name }}<i class="fas fa-chevron-right"></i></a>
@@ -207,20 +193,23 @@
 </header>
 
 <!-- Banner -->
-
+@foreach($products as $product)
+@if($loop->first)
 <div class="banner">
-	<div class="banner_background" style="background-image:url('{{ asset('frontend/assets/images/banner_background.jpg')}}')"></div>
-	<div class="container fill_height">
-		<div class="row fill_height">
-			<div class="banner_product_image"><img src="{{asset('frontend/assets/images/banner_product.png')}}" alt=""></div>
-			<div class="col-lg-5 offset-lg-4 fill_height">
-				<div class="banner_content">
-					<h1 class="banner_text">new era of smartphones</h1>
-					<div class="banner_price"><span>$530</span>$460</div>
-					<div class="banner_product_name">Apple Iphone 6s</div>
-					<div class="button banner_button"><a href="#">Shop Now</a></div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="banner_background" style="background-image:url('{{ asset('frontend/assets/images/banner_background.jpg')}}')"></div>
+<div class="container fill_height">
+<div class="row fill_height">
+<div class="banner_product_image"><img src="{{ URL::to('/') }}/media/product/{{ $product->image_one }}" alt=""></div>
+<div class="col-lg-5 offset-lg-4 fill_height">
+<div class="banner_content">
+<h1 class="banner_text">{{$product->product_name}}</h1>
+<div class="banner_price"><span>Rs{{$product->discount_price}}</span>{{$product->discount_price}}</div>
+<div class="banner_product_name">{{$product->allbrands->brand_name}}</div>
+<div class="button banner_button"><a href="#">Shop Now</a></div>
 </div>
+</div>
+</div>
+</div>
+</div>
+@endif
+@endforeach
