@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    // return view('welcome');
-    return view('frontend.index');
-});
+// Route::get('/', function () {
+//     // return view('welcome');
+//     return view('frontend.main');
+// });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
@@ -34,5 +34,9 @@ Route::get('/subcatajax/{id?}','ProductController@getSubCatsAjax');
 Route::get('/productstatus/{id?}','ProductController@status')->name('product.status');
 Route::resource('/blog/post','PostController');
 Route::resource('/blog/postcategory','PostCategoryController');
+
+// Fronted
+Route::get('/','HomeController@index');
+
 
 
