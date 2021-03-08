@@ -337,7 +337,7 @@ font-weight: 500;" >Rs{{$product->selling_price}}</span></div>
 							<div class="owl-carousel owl-theme popular_categories_slider">
 
 <!-- Popular Categories Item -->
-@foreach($categorys as category)
+@foreach($categorys as $category)
 <div class="owl-item">
 <div class="popular_category d-flex flex-column align-items-center justify-content-center">
 <div class="popular_category_image"><img src="{{asset('frontend/assets/images/popular_1.png')}}" alt=""></div>
