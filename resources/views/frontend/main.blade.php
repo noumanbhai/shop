@@ -73,10 +73,11 @@
 								<div class="owl-carousel owl-theme deals_slider">
 
 <!-- Deals Item -->
-@foreach($products as $key => $product)
  <!-- total slider 3 -->
-@if($product->status==1)
-<div class="owl-item deals_item">
+
+@foreach($hotdeals as $product)
+
+	<div class="owl-item deals_item">
 <div class="deals_image"><img src="{{ URL::to('/') }}/media/product/{{ $product->image_one }}" alt=""></div>
 <div class="deals_content">
 <div class="deals_info_line d-flex flex-row justify-content-start">
@@ -132,7 +133,7 @@
 </div>
 </div>
 </div>
-@endif
+
 @endforeach
 
 
@@ -164,8 +165,8 @@
 									<div class="featured_slider slider">
 <!-- Feature product Start-->
 
-@foreach($products as $product)
-@if($product->status==1)
+@foreach($featured as $product)
+
 <div class="featured_slider_item">
 <div class="border_active"></div>
 <div class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
@@ -199,7 +200,7 @@ font-weight: 500;" >Rs{{$product->selling_price}}</span></div>
 </ul>
 </div>
 </div>
-@endif
+
 @endforeach										
 
 <!-- Slider Item End-->
@@ -217,8 +218,7 @@ font-weight: 500;" >Rs{{$product->selling_price}}</span></div>
 									<div class="featured_slider slider">
 
 										<!-- Slider Item -->
-@foreach($products as $product)
-@if($product-> status== 1 && $product-> trend ==1)
+@foreach($trends as $product)
 <div class="featured_slider_item">
 <div class="border_active"></div>
 <div class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
@@ -251,8 +251,7 @@ font-weight: 500;" >Rs{{$product->selling_price}}</span></div>
 @endif
 </ul>
 </div>
-</div>
-	@endif									
+</div>								
 @endforeach
 </div>
 <div class="featured_slider_dots_cover"></div>
@@ -264,8 +263,7 @@ font-weight: 500;" >Rs{{$product->selling_price}}</span></div>
 <div class="featured_slider slider">
 
 	<!-- Slider Item -->
-@foreach($products as $product)
-@if($product-> status== 1 && $product-> best_rated ==1)
+@foreach($bestrateds as $product)
 	<div class="featured_slider_item">
 		<div class="border_active"></div>
 		<div class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
@@ -298,8 +296,7 @@ font-weight: 500;" >Rs{{$product->selling_price}}</span></div>
 @endif
 			</ul>
 		</div>
-	</div>
-	@endif									
+	</div>								
 @endforeach
 
 </div>
@@ -363,8 +360,9 @@ font-weight: 500;" >Rs{{$product->selling_price}}</span></div>
 				<div class="owl-carousel owl-theme banner_2_slider">
 
 <!-- Banner 2 Slider Item -->
-@foreach($products as $product)
-@if($product->mid_slider==1)
+
+
+@foreach($midsliders as $product)
 
 <div class="owl-item">
 <div class="banner_2_item">
@@ -392,8 +390,8 @@ font-weight: 500;" >Rs{{$product->selling_price}}</span></div>
 </div>			
 </div>
 </div>
-@endif
 @endforeach
+
 
 				</div>
 			</div>
