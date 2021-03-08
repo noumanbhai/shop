@@ -238,9 +238,10 @@
 <div class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
 <div class="product_image d-flex flex-column align-items-center justify-content-center " style="width:170px; height:153px;"><img src="{{ URL::to('/') }}/media/product/{{ $product->image_one }}" alt="" ></div>
 <div class="product_content">
-	@if($product->discount_price==NULL)
-	<div class="product_price discount"><span>Rs{{$product->selling_price}}</span></div>
-	@else
+@if($product->discount_price==0)
+<div class="product_price discount text-danger" ><span class="text-danger"style="font-size: 16px;
+font-weight: 500;" >Rs{{$product->selling_price}}</span></div>
+@else
 <div class="product_price discount">Rs{{$product->discount_price}}<span>Rs{{$product->selling_price}}</span></div>
 @endif
 <div class="product_name"><div><a href="product.html">{{$product->product_name}}</a></div></div>
@@ -255,10 +256,13 @@
 </div>
 <div class="product_fav"><i class="fas fa-heart"></i></div>
 <ul class="product_marks">
+@if($product->discount_price ==0)
+<li class="product_mark product_discount" style="background-color: orange;">New</li>
+@else
 <li class="product_mark product_discount">
 {{(ceil(($product->selling_price - $product->discount_price)/$product->selling_price*100))}}
 </li>
-<li class="product_mark product_new">new</li>
+@endif
 </ul>
 </div>
 </div>
