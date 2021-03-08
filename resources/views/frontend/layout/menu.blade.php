@@ -203,7 +203,14 @@
 <div class="col-lg-5 offset-lg-4 fill_height">
 <div class="banner_content">
 <h1 class="banner_text">{{$product->product_name}}</h1>
-<div class="banner_price"><span>Rs{{$product->discount_price}}</span>{{$product->discount_price}}</div>
+<div class="banner_price">
+@if($product->discount_price==0)
+<h2>{{$product->selling_price }}</h2>
+@else 
+<span>Rs{{$product->discount_price}}</span>{{$product->selling_price}}
+@endif
+</div>
+<!-- <div class="banner_price"><span>Rs{{$product->discount_price}}</span>{{$product->selling_price}}</div> -->
 <div class="banner_product_name">{{$product->allbrands->brand_name}}</div>
 <div class="button banner_button"><a href="#">Shop Now</a></div>
 </div>

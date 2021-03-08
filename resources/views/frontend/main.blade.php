@@ -232,13 +232,18 @@
 <!-- Feature product Start-->
 
 @foreach($products as $product)
+@if($product->status==1)
 <div class="featured_slider_item">
 <div class="border_active"></div>
 <div class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
-<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{asset('frontend/assets/images/featured_1.png')}}" alt=""></div>
+<div class="product_image d-flex flex-column align-items-center justify-content-center " style="width:170px; height:153px;"><img src="{{ URL::to('/') }}/media/product/{{ $product->image_one }}" alt="" ></div>
 <div class="product_content">
-<div class="product_price discount">$225Pakistan<span>$300</span></div>
-<div class="product_name"><div><a href="product.html">{{$product->product_name}}...</a></div></div>
+	@if($product->discount_price==NULL)
+	<div class="product_price discount"><span>Rs{{$product->selling_price}}</span></div>
+	@else
+<div class="product_price discount">Rs{{$product->discount_price}}<span>Rs{{$product->selling_price}}</span></div>
+@endif
+<div class="product_name"><div><a href="product.html">{{$product->product_name}}</a></div></div>
 <div class="product_extras">
 	<div class="product_color">
 		<input type="radio" checked name="product_color" style="background:#b19c83">
@@ -250,12 +255,16 @@
 </div>
 <div class="product_fav"><i class="fas fa-heart"></i></div>
 <ul class="product_marks">
-<li class="product_mark product_discount">-25%</li>
+<li class="product_mark product_discount">
+{{(ceil(($product->selling_price - $product->discount_price)/$product->selling_price*100))}}
+</li>
 <li class="product_mark product_new">new</li>
 </ul>
 </div>
 </div>
-@endforeach										<!-- Slider Item 1-->
+@endif
+@endforeach										
+<!-- Slider Item End-->
 
 
 

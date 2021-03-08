@@ -50,11 +50,11 @@
 
 
 
-                                <a class="btn btn-sm btn-danger" href="{{ route('product.status', $product->id)}}" >Inactive</a>
+                                <a class="btn btn-sm btn-primary" href="{{ route('product.status', $product->id)}}" >Active</a>
                                 <!-- <button class="btn btn-sm btn-primary" value="active">active</button> -->
                                 @else
 
-                                <a class="btn btn-sm btn-primary" href="{{ route('product.status', $product->id)}}" >Activated</a>
+                                <a class="btn btn-sm btn-danger" href="{{ route('product.status', $product->id)}}" >Inactivated</a>
 
 
                                 @endif
