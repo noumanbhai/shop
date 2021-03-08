@@ -103,8 +103,8 @@
  --></div>
 <div class="available">
 <div class="available_line d-flex flex-row justify-content-start">
-<div class="available_title">Available: <span>6</span></div>
-<div class="sold_title ml-auto">Already sold: <span>28</span></div>
+<div class="available_title">Available: <span>{{ $product->product_quantity  }}</span></div>
+<div class="sold_title ml-auto">Already sold: <span>{{ $product->product_quantity+25 }}</span></div>
 </div>
 <div class="available_bar"><span style="width:17%"></span></div>
 </div>
@@ -336,46 +336,15 @@ font-weight: 500;" >Rs{{$product->selling_price}}</span></div>
 						<div class="popular_categories_slider_container">
 							<div class="owl-carousel owl-theme popular_categories_slider">
 
-								<!-- Popular Categories Item -->
-								<div class="owl-item">
-									<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-										<div class="popular_category_image"><img src="{{asset('frontend/assets/images/popular_1.png')}}" alt=""></div>
-										<div class="popular_category_text">Smartphones & Tablets</div>
-									</div>
-								</div>
-
-								<!-- Popular Categories Item -->
-								<div class="owl-item">
-									<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-										<div class="popular_category_image"><img src="{{asset('frontend/assets/images/popular_2.png')}}" alt=""></div>
-										<div class="popular_category_text">Computers & Laptops</div>
-									</div>
-								</div>
-
-								<!-- Popular Categories Item -->
-								<div class="owl-item">
-									<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-										<div class="popular_category_image"><img src="{{asset('frontend/assets/images/popular_3.png')}}" alt=""></div>
-										<div class="popular_category_text">Gadgets</div>
-									</div>
-								</div>
-
-								<!-- Popular Categories Item -->
-								<div class="owl-item">
-									<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-										<div class="popular_category_image"><img src="{{asset('frontend/assets/images/popular_4.png')}}" alt=""></div>
-										<div class="popular_category_text">Video Games & Consoles</div>
-									</div>
-								</div>
-
-								<!-- Popular Categories Item -->
-								<div class="owl-item">
-									<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-										<div class="popular_category_image"><img src="{{asset('frontend/assets/images/popular_5.png')}}" alt=""></div>
-										<div class="popular_category_text">Accessories</div>
-									</div>
-								</div>
-
+<!-- Popular Categories Item -->
+@foreach($categorys as category)
+<div class="owl-item">
+<div class="popular_category d-flex flex-column align-items-center justify-content-center">
+<div class="popular_category_image"><img src="{{asset('frontend/assets/images/popular_1.png')}}" alt=""></div>
+<div class="popular_category_text">{{ $category->category_name }}</div>
+</div>
+</div>
+@endforeach
 							</div>
 						</div>
 					</div>
