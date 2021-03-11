@@ -40,7 +40,7 @@ Route::get('/','HomeController@index');
 // Wishlist
 Route::resource('/wishlist','WishlistController');
 // Wishlist
-Route::get('add/wishlist/{id}','WishlistController@addwishlist');
+Route::get('add/addwishlist/{id}','WishlistController@addwishlist');
 
 
 

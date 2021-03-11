@@ -6,25 +6,5 @@
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/plugins/slick-1.8.0/slick.css') }}">
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/styles/main_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/styles/responsive.css') }}">
-    <script>
-  @if(Session::has('message'))
-    var type = "{{ Session::get('alert-type', 'info') }}";
-    switch(type){
-        case 'info':
-            toastr.info("{{ Session::get('message') }}");
-            break;
-        
-        case 'warning':
-            toastr.warning("{{ Session::get('message') }}");
-            break;
-
-        case 'success':
-            toastr.success("{{ Session::get('message') }}");
-            break;
-
-        case 'error':
-            toastr.error("{{ Session::get('message') }}");
-            break;
-    }
-  @endif
-</script>
+<!-- sweet alert 2 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.15.5/sweetalert2.css">

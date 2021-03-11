@@ -84,38 +84,70 @@ class WishlistController extends Controller
         //
     }
     public function addwishlist($id)
+      // return $id;
+// { 
+// if (Auth::check()) {
+// $userid=Auth::id();
+// $check=Wishlist::where('user_id',$userid)->where('product_id',$id);
+// if ($check==[]) {
+// return \Response::json(['success'=>'Wish list is add']);
 
-    { 
-if (Auth::check()) {
+
+// } else {
+
+// $list= new Wishlist([
+// 'user_id'=>$userid,
+// 'product_id'=>$id,
+// ]);
+// $list->save();
+// return \Response::json(['success'=>'Wish list is add']);
+
+// }
+
+// }
+// }
+// 
+    {
 
 
-        $userid=Auth::id();
-        $check=Wishlist::where('user_id',$userid)->where('product_id',$id);
+        $userid = Auth::id();
+        $check=Wishlist::where('user_id',$userid)->where('product_id',$id)->first();
+
+        $data = array(
+            'user_id' => $userid,
+            'product_id' => $id,
+
+        );
+
+        if (Auth::Check()) {
+
+         if ($check) {
+          return \Response::json(['error' => 'Product Already Has on your wishlist']);   
+      }else{
+
+        $list= new Wishlist([
+            'user_id'=>$userid,
+            'product_id'=>$id,
+        ]);
+        $list->save();
 
 
-        if ($check==[]) {
-            $notification = array(
-                'message' => 'Already has in your list', 
-                'alert-type' => 'error'
-            );
-            return redirect('/')->with($notification);
+    return \Response::json(['success' => 'Product Added on wishlist']);
 
-        } else {
-
-            $list= new Wishlist([
-                'user_id'=>$userid,
-                'product_id'=>$id,
-            ]);
-            $list->save();
-
-            $notification = array(
-                'message' => 'wishlist is success', 
-                'alert-type' => 'success'
-            );
-            return redirect('/')->with($notification);
-        }
-        
-        }
     }
+
+
+}else{
+    return \Response::json(['error' => 'At first loing your account']);      
+
+} 
+
 }
+}
+
+
+
+
+
+
 

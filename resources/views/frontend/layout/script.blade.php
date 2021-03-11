@@ -1,4 +1,6 @@
 <script src="{{asset('frontend/assets/js/jquery-3.3.1.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous"></script>
+
 <script src="{{asset('frontend/assets/styles/bootstrap4/popper.js')}}"></script>
 <script src="{{asset('frontend/assets/styles/bootstrap4/bootstrap.min.js')}}"></script>
 <script src="{{asset('frontend/assets/plugins/greensock/TweenMax.min.js')}}"></script>
@@ -10,26 +12,11 @@
 <script src="{{asset('frontend/assets/plugins/slick-1.8.0/slick.js')}}"></script>
 <script src="{{asset('frontend/assets/plugins/easing/easing.js')}}"></script>
 <script src="{{asset('frontend/assets/js/custom.js')}}"></script>
+<!-- sweet alert 2 -->
 
-    <script>
-  @if(Session::has('message'))
-    var type = "{{ Session::get('alert-type', 'info') }}";
-    switch(type){
-        case 'info':
-            toastr.info("{{ Session::get('message') }}");
-            break;
-        
-        case 'warning':
-            toastr.warning("{{ Session::get('message') }}");
-            break;
+<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+<script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+<!-- nn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.15.5/sweetalert2.min.js"></script>
 
-        case 'success':
-            toastr.success("{{ Session::get('message') }}");
-            break;
 
-        case 'error':
-            toastr.error("{{ Session::get('message') }}");
-            break;
-    }
-  @endif
-</script>

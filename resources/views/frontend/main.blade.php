@@ -78,7 +78,7 @@
 							@foreach($hotdeals as $product)
 
 							<div class="owl-item deals_item">
-								<div class="deals_image"><img src="{{ URL::to('/') }}/media/product/{{ $product->image_one }}" alt=""></div>
+			<div class="deals_image"><img src="{{ URL::to('/') }}/media/product/{{ $product->image_one }}" alt=""></div>
 								<div class="deals_content">
 									<div class="deals_info_line d-flex flex-row justify-content-start">
 										<div class="deals_item_category"><a href="#">{{$product->allbrands->brand_name }}</a></div>
@@ -188,9 +188,8 @@
 								<button class="product_cart_button">Add to Cart</button>
 							</div>
 						</div>
-<a href="{{ URL::to('add/wishlist/'.$product->id)}}">
-<div class="product_fav"><i class="fas fa-heart"></i></div>
-</a>
+		<button class="addwishlist" data-id="{{$product->id }}">		<div class="product_fav"><i class="fas fa-heart"></i></div>
+	   </button>	
 						<ul class="product_marks">
 							@if($product->discount_price ==0)
 							<li class="product_mark product_discount" style="background-color: orange;">New</li>
@@ -2851,4 +2850,58 @@
 		</div>
 	</div>
 </div>
+<script
+src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+crossorigin="anonymous">
+</script>
+<script type="text/javascript">
+    
+   $(document).ready(function(){
+     $('.addwishlist').on('click', function(){
+        var id = $(this).data('id');
+        if (id) {
+            $.ajax({
+                url: " {{ url('add/addwishlist/') }}/"+id,
+                type:"GET",
+                datType:"json",
+                success:function(data){
+             const Toast = Swal.mixin({
+                  toast: true,
+                  position: 'top-end',
+                  showConfirmButton: false,
+                  timer: 3000,
+                  timerProgressBar: true,
+                  onOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                  }
+                })
+
+             if ($.isEmptyObject(data.error)) {
+
+                Toast.fire({
+                  icon: 'success',
+                  title: data.success
+                })
+             }else{
+                 Toast.fire({
+                  icon: 'error',
+                  title: data.error
+                })
+             }
+ 
+
+                },
+            });
+
+        }else{
+            alert('danger');
+        }
+     });
+
+   });
+
+
+</script>
 @endsection
