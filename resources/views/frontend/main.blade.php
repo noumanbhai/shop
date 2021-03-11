@@ -188,7 +188,9 @@
 								<button class="product_cart_button">Add to Cart</button>
 							</div>
 						</div>
-						<div class="product_fav"><i class="fas fa-heart"></i></div>
+<a href="{{ URL::to('add/wishlist/'.$product->id)}}">
+<div class="product_fav"><i class="fas fa-heart"></i></div>
+</a>
 						<ul class="product_marks">
 							@if($product->discount_price ==0)
 							<li class="product_mark product_discount" style="background-color: orange;">New</li>

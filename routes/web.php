@@ -37,6 +37,11 @@ Route::resource('/blog/postcategory','PostCategoryController');
 
 // Fronted
 Route::get('/','HomeController@index');
+// Wishlist
+Route::resource('/wishlist','WishlistController');
+// Wishlist
+Route::get('add/wishlist/{id}','WishlistController@addwishlist');
+
 
 
 
